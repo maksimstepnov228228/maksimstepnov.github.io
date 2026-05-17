@@ -4,12 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maksim Stepnov | Mathematics & Physics</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+       
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .title-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .hero-bg {
+            background: radial-gradient(circle at 50% 30%, #1e3a8a 0%, #0f172a 50%, #020617 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(#67e8f9 1px, transparent 1px),
+                linear-gradient(90deg, #67e8f9 1px, transparent 1px);
+            background-size: 80px 80px;
+            opacity: 0.06;
+            animation: gridMove 25s linear infinite;
+        }
+        @keyframes gridMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 80px 80px; }
+        }
+        .math-symbol {
+            font-size: 5rem;
+            opacity: 0.08;
+            color: #67e8f9;
+            position: absolute;
+            user-select: none;
+            pointer-events: none;
+            animation: float 18s infinite linear;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-40px) rotate(8deg); }
+        }
+        .section-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+       
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .glow-cyan {
+            text-shadow: 0 0 20px rgb(103 232 249);
+        }
+    </style>
 </head>
-<body>
-  
+<body class="bg-zinc-950 text-zinc-200">
+
+    <!-- Hero -->
     <section class="hero-bg min-h-screen flex items-center relative">
+        <!-- Floating Math Symbols -->
         <div class="math-symbol top-24 left-12" style="animation-delay: 0s;">∫</div>
         <div class="math-symbol top-40 right-20 text-6xl" style="animation-delay: 4s;">∇</div>
         <div class="math-symbol bottom-32 left-1/4" style="animation-delay: 9s;">∂</div>
@@ -44,7 +102,8 @@
             <i class="fas fa-chevron-down text-4xl text-cyan-400"></i>
         </div>
     </section>
-  
+
+    <!-- About -->
     <section id="about" class="py-24 bg-zinc-900 section-fade">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-6xl font-bold mb-16 text-center title-font glow-cyan">About Me</h2>
@@ -72,6 +131,7 @@
         </div>
     </section>
 
+    <!-- Academics -->
     <section id="academics" class="py-24 section-fade">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-6xl font-bold mb-16 text-center title-font">Academic Trajectory</h2>
@@ -96,11 +156,12 @@
                 </div>
             </div>
 
+            <!-- UCSD Multivariable Calculus Dedicated Box -->
             <div class="mt-16 bg-gradient-to-br from-cyan-950 to-zinc-900 border border-cyan-400/50 p-12 rounded-3xl">
                 <div class="flex flex-col md:flex-row items-start md:items-center gap-8">
                     <div class="flex-shrink-0">
                         <div class="w-20 h-20 bg-cyan-400/10 rounded-2xl flex items-center justify-center text-5xl">
-                            ∫∫∫
+                            🧮
                         </div>
                     </div>
                     <div class="flex-1">
@@ -122,6 +183,7 @@
         </div>
     </section>
 
+    <!-- Achievements -->
     <section class="py-24 bg-zinc-900 section-fade">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-6xl font-bold mb-16 text-center title-font glow-cyan">Achievements</h2>
@@ -145,6 +207,7 @@
         </div>
     </section>
 
+    <!-- Projects -->
     <section class="py-24 section-fade">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-6xl font-bold mb-16 text-center title-font">Selected Projects</h2>
@@ -168,6 +231,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="py-20 bg-black border-t border-cyan-900">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <p class="text-2xl mb-8">Interested in mathematics, physics, or research collaboration?</p>
@@ -180,7 +244,9 @@
     </footer>
 
     <script>
+        // Scroll animations
         const sections = document.querySelectorAll('.section-fade');
+       
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
