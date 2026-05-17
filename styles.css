@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #09090b;
+    color: #e4e4e7;
+    margin: 0;
+}
+
+.title-font {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.hero-bg {
+    background: radial-gradient(circle at 50% 30%, #1e3a8a 0%, #0f172a 50%, #020617 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(#67e8f9 1px, transparent 1px),
+        linear-gradient(90deg, #67e8f9 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.06;
+    animation: gridMove 25s linear infinite;
+}
+
+@keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 80px 80px; }
+}
+
+.math-symbol {
+    font-size: 5rem;
+    opacity: 0.08;
+    color: #67e8f9;
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    animation: float 18s infinite linear;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-40px) rotate(8deg); }
+}
+
+.section-fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.glow-cyan {
+    text-shadow: 0 0 20px rgb(103 232 249);
+}
+
+.max-w-6xl {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.py-24 { padding-top: 6rem; padding-bottom: 6rem; }
+
+@media (max-width: 768px) {
+    .text-7xl { font-size: 2.75rem; }
+    .text-6xl { font-size: 2.5rem; }
+}
